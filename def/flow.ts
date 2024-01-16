@@ -277,6 +277,14 @@ export default function (fork: Fork) {
     .bases('ClassProperty')
     .build();
 
+  def("QualifiedTypeofIdentifier")
+    .bases("Node")
+    .build("qualification", "id")
+    .field("qualification",
+           or(def("Identifier"),
+              def("QualifiedTypeIdentifier")))
+    .field("id", def("Identifier"));
+
   def("ClassImplements")
     .bases("Node")
     .build("id")

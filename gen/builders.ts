@@ -2123,6 +2123,21 @@ export interface PropertyDefinitionBuilder {
   ): namedTypes.PropertyDefinition;
 }
 
+export interface QualifiedTypeofIdentifierBuilder {
+  (
+    qualification: K.IdentifierKind | K.QualifiedTypeIdentifierKind,
+    id: K.IdentifierKind
+  ): namedTypes.QualifiedTypeofIdentifier;
+  from(
+    params: {
+      comments?: K.CommentKind[] | null,
+      id: K.IdentifierKind,
+      loc?: K.SourceLocationKind | null,
+      qualification: K.IdentifierKind | K.QualifiedTypeIdentifierKind
+    }
+  ): namedTypes.QualifiedTypeofIdentifier;
+}
+
 export interface InterfaceTypeAnnotationBuilder {
   (
     body: K.ObjectTypeAnnotationKind,
@@ -3842,6 +3857,7 @@ export interface builders {
   typeofTypeAnnotation: TypeofTypeAnnotationBuilder;
   typeParameter: TypeParameterBuilder;
   propertyDefinition: PropertyDefinitionBuilder;
+  qualifiedTypeofIdentifier: QualifiedTypeofIdentifierBuilder;
   interfaceTypeAnnotation: InterfaceTypeAnnotationBuilder;
   interfaceExtends: InterfaceExtendsBuilder;
   interfaceDeclaration: InterfaceDeclarationBuilder;
